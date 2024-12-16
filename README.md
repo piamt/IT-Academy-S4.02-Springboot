@@ -66,7 +66,7 @@ Aprofitant l’especificació JPA, hauràs de persistir aquesta entitat a una ba
 - cat.itacademy.s04.t02.n01.services
 - cat.itacademy.s04.t02.n01.repository
 - cat.itacademy.s04.t02.n01.exception
-- 
+
 La classe ubicada al paquet controllers (FruitController, per exemple), haurà de ser capaç de donar resposta a les següents peticions per actualitzar i consultar informació:
 
 - http://localhost:8080/fruit/add
