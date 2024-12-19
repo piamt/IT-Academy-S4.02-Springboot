@@ -11,6 +11,6 @@ public interface FruitService {
     List<Fruit> findAllFruits();
     Fruit saveFruit(Fruit fruit) throws FruitAlreadyExistsException;
     Fruit updateFruit(Integer id, Fruit fruit) throws FruitNotFoundException;
-    void deleteFruit(Integer id);
+    void deleteFruit(Integer id) throws FruitNotFoundException;
     Fruit getFruitById(Integer id) throws FruitNotFoundException;
 }

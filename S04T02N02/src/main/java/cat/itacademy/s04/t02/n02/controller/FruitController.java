@@ -39,7 +39,7 @@ public class FruitController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteFruit(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteFruit(@PathVariable Integer id) throws FruitNotFoundException {
         fruitService.deleteFruit(id);
         return ResponseEntity.ok("Fruit successfully deleted");
     }

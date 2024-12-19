@@ -30,10 +30,7 @@ public class FruitServiceImpl implements FruitService {
 
     @Override
     public Fruit updateFruit(Integer id, Fruit fruit) throws FruitNotFoundException {
-        Optional<Fruit> fruitOp = fruitRepository.findById(id);
-        if (fruitOp.isEmpty()) throw new FruitNotFoundException("Fruit does not exist for id");
-
-        Fruit fruitDb = fruitOp.get();
+        Fruit fruitDb =  getFruitById(id);
         if(Objects.nonNull(fruit.getName()) && !"".equalsIgnoreCase(fruit.getName())) {
             fruitDb.setName(fruit.getName());
         }
@@ -43,15 +40,14 @@ public class FruitServiceImpl implements FruitService {
     }
 
     @Override
-    public void deleteFruit(Integer id) {
+    public void deleteFruit(Integer id) throws FruitNotFoundException {
+        getFruitById(id);
         fruitRepository.deleteById(id);
     }
 
     @Override
     public Fruit getFruitById(Integer id) throws FruitNotFoundException {
-        Optional<Fruit> fruit = fruitRepository.findById(id);
-        if (fruit.isEmpty()) throw new FruitNotFoundException("Fruit does not exist for id");
-        return fruit.get();
+        return fruitRepository.findById(id) .orElseThrow(() -> new FruitNotFoundException("Fruit does not exist for id"));
     }
 }
 
